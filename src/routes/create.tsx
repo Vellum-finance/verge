@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useRef, useState } from "react";
+import { saveToken } from "../lib/tokens";
 
 export const Route = createFileRoute("/create")({
   component: CreateToken,
