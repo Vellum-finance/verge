@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTokens, Token } from "../lib/tokens";
 
 export const Route = createFileRoute("/")({
   component: VergeApp,
@@ -8,6 +9,11 @@ export const Route = createFileRoute("/")({
 function VergeApp() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<"new" | "mcap" | "volume">("new");
+  const [tokens, setTokens] = useState<Token[]>([]);
+
+  useEffect(() => {
+    setTokens(getTokens());
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
