@@ -86,9 +86,8 @@ function VergeApp() {
               No tokens listed yet.
             </h1>
             <p className="text-sm text-muted-foreground max-w-[52ch] mb-8">
-              Launch a token to open the market. Deployment takes seconds and requires no
-              upfront liquidity — trading opens instantly against the virtual AMM and
-              graduates to a Uniswap v4 pool at the market cap threshold.
+              The token launch is not yet available for now 
+              Follow our official X account to receive the latest launch announcements and updates.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
