@@ -245,8 +245,9 @@ function CreateToken() {
 
           <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4 text-xs text-muted-foreground">
             <div className="mono uppercase tracking-widest text-[10px] text-foreground mb-1">
+            </div>
           </div>
-
+          
           <div className="flex items-center justify-between gap-3 pt-2">
             <Link
               to="/"
