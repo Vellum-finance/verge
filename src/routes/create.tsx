@@ -171,7 +171,7 @@ function CreateToken() {
             />
           </Field>
 
-          <Field label="Logo" hint={`PNG · JPG · WEBP · SVG · ≤${MAX_LOGO_MB}MB`} error={errors.logo}>
+          <Field label="Logo" hint= ≤${MAX_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
                 type="button"
@@ -198,7 +198,7 @@ function CreateToken() {
                     </button>
                   </>
                 ) : (
-                  <>PNG / JPG / WebP · 2 MB max · 1:1 recommended.</>
+                  <>PNG / JPG / WebP · SVG · 1:1 recommended.</>
                 )}
               </div>
               <input
