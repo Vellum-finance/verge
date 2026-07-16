@@ -1,20 +1,20 @@
-type vergeErrorOptions = {
+type lovableErrorOptions = {
   mechanism?: "manual" | "onerror" | "unhandledrejection" | "react_error_boundary";
   handled?: boolean;
   severity?: "error" | "warning" | "info";
 };
 
-type vergeEvents = {
+type lovableEvents = {
   captureException?: (
     error: unknown,
     context?: Record<string, unknown>,
-    options?: VergeErrorOptions,
+    options?: lovableErrorOptions,
   ) => void;
 };
 
 declare global {
   interface Window {
-    __vergeEvents?: vergeEvents;
+    __lovableEvents?: lovableEvents;
   }
 }
 
