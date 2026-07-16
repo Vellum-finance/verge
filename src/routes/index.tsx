@@ -114,7 +114,51 @@ function VergeApp() {
           </div>
         </section>
       )}
-      
+    {tokens.length > 0 && (
+  <section className="rounded-xl ring-1 ring-hairline bg-card overflow-hidden">
+    <div className="px-5 py-3 border-b border-hairline text-[10px] mono uppercase tracking-widest text-muted-foreground">
+      Recently launched
+    </div>
+
+    <div className="divide-y divide-hairline">
+      {tokens.map((token) => (
+        <div
+          key={token.createdAt}
+          className="flex items-center justify-between px-5 py-4"
+        >
+          <div className="flex items-center gap-4">
+            {token.logo ? (
+              <img
+                src={token.logo}
+                alt={token.name}
+                className="h-10 w-10 rounded-full object-cover"
+              />
+            ) : (
+              <div className="h-10 w-10 rounded-full bg-surface-alt grid place-items-center">
+                ?
+              </div>
+            )}
+
+            <div>
+              <div className="font-medium">
+                {token.name}
+              </div>
+
+              <div className="text-xs mono text-muted-foreground">
+                ${token.ticker}
+              </div>
+            </div>
+          </div>
+
+          <div className="text-xs text-muted-foreground">
+            Just launched
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+)}
+        
         {/* Minimal footer strip */}
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-[10px] mono uppercase tracking-widest text-muted-foreground">
           <span>0 tokens · 0 graduated · $0 volume</span>
