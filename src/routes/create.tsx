@@ -87,14 +87,30 @@ function CreateToken() {
   };
 
   const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setSubmitting(true);
-    // Placeholder — deployment pipeline wires in once the on-chain factory is live.
-    await new Promise((r) => setTimeout(r, 600));
-    setSubmitting(false);
-    alert("Connect your wallet to deploy. On-chain factory launching soon.");
-  };
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  setSubmitting(true);
+
+  await new Promise((r) => setTimeout(r, 600));
+
+  saveToken({
+    name: form.name,
+    ticker: form.ticker,
+    description: form.description,
+    logo: logoPreview ?? undefined,
+    createdAt: Date.now(),
+  });
+
+  setSubmitting(false);
+
+  alert("Token created successfully!");
+
+  router.navigate({
+    to: "/",
+  });
+};
 
   return (
     <div className="min-h-screen bg-background text-foreground">
