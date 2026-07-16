@@ -112,8 +112,6 @@ function VergeApp() {
           <span>0 tokens · 0 graduated · $0 volume</span>
           <div className="flex gap-5">
             <a href="#" className="hover:text-foreground transition-colors">Twitter</a>
-            <a href="#" className="hover:text-foreground transition-colors">Telegram</a>
-            <a href="#" className="hover:text-foreground transition-colors">Docs</a>
           </div>
         </div>
       </main>
