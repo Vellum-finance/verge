@@ -16,7 +16,7 @@ function VergeApp() {
           <div className="flex items-center gap-6">
             <span className="mono text-lg font-medium tracking-tighter text-brand">VERGE.</span>
             <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-              Robinhood Network · Uniswap v4
+              Robinhood Network ·
             </span>
           </div>
           <div className="flex items-center gap-3">
@@ -83,12 +83,10 @@ function VergeApp() {
 
           <div className="px-6 py-24 flex flex-col items-center text-center">
             <h1 id="empty-state" className="text-2xl md:text-3xl font-medium mb-3 max-w-[38ch]">
-              No tokens listed yet.
+              TOKEN LAUNCH IS NOT CURRENTLY AVAILABLE FOR NOW.
             </h1>
             <p className="text-sm text-muted-foreground max-w-[52ch] mb-8">
-              Launch a token to open the market. Deployment takes seconds and requires no
-              upfront liquidity — trading opens instantly against the virtual AMM and
-              graduates to a Uniswap v4 pool at the market cap threshold.
+              Stay updated through our official X account for the latest announcements.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
@@ -113,8 +111,6 @@ function VergeApp() {
           <span>0 tokens · 0 graduated · $0 volume</span>
           <div className="flex gap-5">
             <a href="#" className="hover:text-foreground transition-colors">Twitter</a>
-            <a href="#" className="hover:text-foreground transition-colors">Telegram</a>
-            <a href="#" className="hover:text-foreground transition-colors">Docs</a>
           </div>
         </div>
       </main>
