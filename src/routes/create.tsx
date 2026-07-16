@@ -198,7 +198,7 @@ function CreateToken() {
                     </button>
                   </>
                 ) : (
-                  <>Square, 512×512 recommended.</>
+                  <>PNG / JPG / WebP · 2 MB max · 1:1 recommended.</>
                 )}
               </div>
               <input
