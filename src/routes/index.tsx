@@ -76,6 +76,7 @@ function VergeApp() {
         </div>
 
         {/* Empty state — no tokens yet */}
+        {tokens.length === 0 && (
         <section
           aria-labelledby="empty-state"
           className="rounded-xl ring-1 ring-hairline bg-card overflow-hidden"
@@ -112,7 +113,8 @@ function VergeApp() {
             </div>
           </div>
         </section>
-
+      )}
+      
         {/* Minimal footer strip */}
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-[10px] mono uppercase tracking-widest text-muted-foreground">
           <span>0 tokens · 0 graduated · $0 volume</span>
