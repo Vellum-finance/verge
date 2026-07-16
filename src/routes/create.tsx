@@ -105,7 +105,7 @@ function CreateToken() {
               VERGE.
             </Link>
             <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-              Robinhood Network · Uniswap v4
+              Robinhood Network ·
             </span>
           </div>
           <button
@@ -127,10 +127,8 @@ function CreateToken() {
             >
               ← Back
             </button>
-            <h1 className="mt-3 text-2xl md:text-3xl font-medium">Deploy a token</h1>
+            <h1 className="mt-3 text-2xl md:text-3xl font-medium">Launch token</h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              Trading opens instantly against a virtual AMM. Graduation to a Uniswap v4 pool
-              is automatic once market cap reaches the threshold.
             </p>
           </div>
         </div>
@@ -174,7 +172,7 @@ function CreateToken() {
             />
           </Field>
 
-          <Field label="Logo" hint={`PNG · JPG · WEBP · SVG · ≤${MAX_LOGO_MB}MB`} error={errors.logo}>
+          <Field label="Logo" hint={`≤${MAX_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
                 type="button"
@@ -201,7 +199,7 @@ function CreateToken() {
                     </button>
                   </>
                 ) : (
-                  <>Square, 512×512 recommended.</>
+                  <>PNG · JPG · WEBP · SVG .</>
                 )}
               </div>
               <input
@@ -248,10 +246,6 @@ function CreateToken() {
 
           <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4 text-xs text-muted-foreground">
             <div className="mono uppercase tracking-widest text-[10px] text-foreground mb-1">
-              Deployment summary
-            </div>
-            Fixed supply · virtual AMM bonding curve · auto-graduation to Uniswap v4 with LP
-            burned at threshold. A small network fee is charged at deployment.
           </div>
 
           <div className="flex items-center justify-between gap-3 pt-2">
