@@ -73,9 +73,8 @@ function CreateToken() {
     if (!form.ticker.trim()) next.ticker = "Required";
     else if (!/^[A-Z0-9]{2,10}$/.test(form.ticker))
       next.ticker = "2–10 uppercase letters or digits";
-    if (!form.description.trim()) next.description = "Required";
-    else if (form.description.length > MAX_DESC)
-      next.description = `Max ${MAX_DESC} characters`;
+   if (form.description && form.description.length > MAX_DESC)
+  next.description = `Max ${MAX_DESC} characters`;
     if (!logo) next.logo = "Logo required";
     const urlRe = /^https?:\/\/.+/i;
     if (form.website && !urlRe.test(form.website)) next.website = "Must start with https://";
@@ -105,7 +104,7 @@ function CreateToken() {
               VERGE.
             </Link>
             <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-              Robinhood Network · Uniswap v4
+              Robinhood Network · 
             </span>
           </div>
           <button
@@ -127,10 +126,8 @@ function CreateToken() {
             >
               ← Back
             </button>
-            <h1 className="mt-3 text-2xl md:text-3xl font-medium">Deploy a token</h1>
+            <h1 className="mt-3 text-2xl md:text-3xl font-medium">Launch token</h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              Trading opens instantly against a virtual AMM. Graduation to a Uniswap v4 pool
-              is automatic once market cap reaches the threshold.
             </p>
           </div>
         </div>
@@ -145,7 +142,7 @@ function CreateToken() {
               <input
                 value={form.name}
                 onChange={(e) => set("name", e.target.value)}
-                placeholder="e.g. Verge Protocol Token"
+                placeholder="e.g. Verge"
                 maxLength={32}
                 className={inputCls(!!errors.name)}
               />
@@ -248,10 +245,6 @@ function CreateToken() {
 
           <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4 text-xs text-muted-foreground">
             <div className="mono uppercase tracking-widest text-[10px] text-foreground mb-1">
-              Deployment summary
-            </div>
-            Fixed supply · virtual AMM bonding curve · auto-graduation to Uniswap v4 with LP
-            burned at threshold. A small network fee is charged at deployment.
           </div>
 
           <div className="flex items-center justify-between gap-3 pt-2">
