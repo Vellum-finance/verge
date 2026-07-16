@@ -16,7 +16,7 @@ function VergeApp() {
           <div className="flex items-center gap-6">
             <span className="mono text-lg font-medium tracking-tighter text-brand">VERGE.</span>
             <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-              Robinhood Network · Uniswap v4
+              Robinhood Network · 
             </span>
           </div>
           <div className="flex items-center gap-3">
