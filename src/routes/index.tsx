@@ -107,11 +107,11 @@ function VergeApp() {
 
           <div className="px-6 py-24 flex flex-col items-center text-center">
             <h1 id="empty-state" className="text-2xl md:text-3xl font-medium mb-3 max-w-[38ch]">
-               Something new is about to launch.
+               The token launcher currently being prepared.
               
             </h1>
             <p className="text-sm text-muted-foreground max-w-[52ch] mb-8">
-              The token launch is not yet available stay tuned to our official X account for the latest announcements.
+               Make sure to follow the official Verge X account for all future updates and announcements.
             </p>
            <div className="flex items-center justify-center">
              <Link
