@@ -12,7 +12,7 @@ function VergeApp() {
   return (
    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
      
-     <div className="absolute inset-0 pointer-events-none overflow-hidden">
+     <div className="absolute inset-0 pointer-events-none overflow-hidden"><div
        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[900px] bg-brand/15 blur-[160px] rounded-full glow-move" />
 
        <div className="absolute top-20 -left-40 h-[500px] w-[500px] bg-brand/10 blur-[150px] rounded-full glow-left" />
@@ -30,11 +30,26 @@ function VergeApp() {
      
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <span className="mono text-lg font-medium tracking-tighter text-brand">VERGE.</span>
-            <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-            </span>
-          </div>
+          <div className="flex items-center gap-3">
+
+            <Link 
+              to="/" 
+              className="flex items-center gap-3"
+            >
+
+              <img
+                src="/verge-logo.png"
+                alt="Verge logo"
+                className="h-8 w-8 object-contain"
+              />
+
+              <span className="mono text-lg font-medium tracking-tighter text-brand">
+                VERGE<span className="text-brand">.</span>
+              </span>
+
+           </Link>
+
+        </div>
           <div className="flex items-center gap-3">
             <button
               type="button"
