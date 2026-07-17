@@ -127,7 +127,7 @@ function CreateToken() {
              <img
                src="/verge-logo.png"
                alt="Verge logo"
-               className="h-8 w-8 object-contain"
+               className="h-12 w-12 object-contain"
           />
 
           <span className="mono text-lg font-medium tracking-tighter text-brand">
