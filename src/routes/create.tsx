@@ -215,7 +215,7 @@ function CreateToken() {
             />
           </Field>
 
-          <Field label="Logo" hint={`≤${MAX_TOKEN_LOGO_MB}MB`} error={errors.logo}>
+          <Field label="Token Image" hint={`≤${MAX_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
                 type="button"
