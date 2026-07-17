@@ -182,7 +182,7 @@ function CreateToken() {
          noValidate
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <Field label="Logo" error={errors.name} className="sm:col-span-2">
+            <Field label="Name" error={errors.name} className="sm:col-span-2">
               <input
                 value={form.name}
                 onChange={(e) => set("name", e.target.value)}
