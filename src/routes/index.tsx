@@ -134,10 +134,10 @@ function VergeApp() {
 
       <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
         <div className="text-sm font-medium mb-1">
-          Virtual AMM Trading
+          Designed For Communities
         </div>
         <div className="text-xs text-muted-foreground">
-          Enable instant markets with a virtual liquidity model.
+          Give creators the tools to build and grow together.
         </div>
       </div>
 
@@ -152,10 +152,10 @@ function VergeApp() {
 
       <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
         <div className="text-sm font-medium mb-1">
-          DEX Graduation
+          Market Starts Here
         </div>
         <div className="text-xs text-muted-foreground">
-          Successful projects can progress into decentralized liquidity.
+          Every idea begins with a token. Verge provides the foundation to bring it into the market.
         </div>
       </div>
 
