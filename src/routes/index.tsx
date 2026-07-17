@@ -49,7 +49,7 @@ function VergeApp() {
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-10 text-center">
           <div className="text-[10px] mono uppercase tracking-[0.3em] text-brand mb-4">
-            Robinhood Network
+            Robinhood
            </div>
 
           <h1 className="text-4xl md:text-5xl font-medium tracking-tight">
