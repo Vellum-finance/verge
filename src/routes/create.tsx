@@ -63,7 +63,7 @@ function CreateToken() {
     }
     setLogo(file);
     const url = URL.createObjectURL(file);
-    setImsgePreview(url);
+    setLogoPreview(url);
   };
 
   const validate = (): boolean => {
@@ -108,13 +108,14 @@ function CreateToken() {
 
     </div>
 
-       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-       style={{
-        backgroundLogo:
-         "linear-gradient(...",
-       backgroundSize:"40px 40px",
-      }}
-      />
+       <div
+         className="absolute inset-0 opacity-[0.03] pointer-events-none"
+         style={{
+           backgroundImage:
+             "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+           backgroundSize: "40px 40px",
+         }}
+       />
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -166,19 +167,18 @@ function CreateToken() {
         </div>
 
         <form
-          onSubmit={submit}
-          className="
-          rounded-2xl 
-          ring-1 ring-white/10 
-          bg-white/[0.03]
-          backdrop-blur-xl
-          p-6 md:p-8 
-          space-y-6
-          shadow-[0_0_80px_rgba(184,255,0,0.06)]
-          "
-          noValidate
-          
-          className="animate-in fade-in slide-in-from-bottom-4 duration-700"
+         onSubmit={submit}
+         className="
+         rounded-2xl
+         ring-1 ring-white/10
+         bg-white/[0.03]
+         backdrop-blur-xl
+         p-6 md:p-8
+         space-y-6
+         shadow-[0_0_80px_rgba(184,255,0,0.06)]
+         animate-in fade-in slide-in-from-bottom-4 duration-700
+         "
+         noValidate
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             <Field label="Token name" error={errors.name} className="sm:col-span-2">
@@ -247,7 +247,7 @@ function CreateToken() {
               <input
                 ref={fileRef}
                 type="file"
-                accept="logo/png,logo/jpeg,logo/webp,logo/gif,ilogomage/svg+xml"
+                accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
                 className="hidden"
                 onChange={(e) => onLogo(e.target.files?.[0] ?? null)}
               />
