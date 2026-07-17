@@ -110,11 +110,11 @@ function CreateToken() {
     </div>
 
        <div
-         className="absolute inset-0 opacity-[0.03] pointer-events-none"
+         className="absolute inset-0 opacity-[0.05] pointer-events-none"
          style={{
            backgroundImage:
              "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
-           backgroundSize: "40px 40px",
+           backgroundSize: "32px 32px"
          }}
        />
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
@@ -171,8 +171,9 @@ function CreateToken() {
          onSubmit={submit}
          className="
          rounded-2xl
+         bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-transparent
          ring-1 ring-white/10
-         bg-white/[0.03]
+         shadow-[0_0_80px_rgba(184,255,0,0.08)]
          backdrop-blur-xl
          p-6 md:p-8
          space-y-6
@@ -218,16 +219,41 @@ function CreateToken() {
           <Field label="Token Image" hint={`≤${MAX_TOKEN_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
-                type="button"
-                onClick={() => fileRef.current?.click()}
-                className="relative shrink-0 h-24 w-24 rounded-xl ring-1 ring-hairline bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-200 hover:scale-[1.03] grid place-items-center overflow-hidden"
-              >
-                {logoPreview ? (
-                  <img src={logoPreview} alt="logo preview" className="h-full w-full object-cover" />
-                ) : (
-                  <span className="text-muted-foreground text-2xl">+</span>
-                )}
-              </button>
+  type="button"
+  onClick={() => fileRef.current?.click()}
+  className="
+    h-28
+    w-28
+    rounded-2xl
+    border
+    border-dashed
+    border-white/20
+    bg-white/[0.04]
+    hover:bg-brand/10
+    hover:border-brand/50
+    transition-all
+    grid
+    place-items-center
+    overflow-hidden
+  "
+>
+  {logoPreview ? (
+    <img
+      src={logoPreview}
+      alt="token preview"
+      className="h-full w-full object-cover"
+    />
+  ) : (
+    <div className="text-center">
+      <div className="text-3xl text-muted-foreground">
+        +
+      </div>
+      <div className="text-[9px] mono uppercase">
+        Upload
+      </div>
+    </div>
+  )}
+</button>
               <div className="text-xs mono text-muted-foreground">
                 {logo ? (
                   <>
@@ -337,11 +363,26 @@ function Field({
   );
 }
 
-function inputCls(hasError: boolean) {
-  return `w-full bg-black/20 backdrop-blur-sm ring-1 ${
-    hasError
-      ? "ring-destructive/60"
-      : "ring-white/10 focus:ring-brand/50"
-  } outline-none rounded-lg px-3 py-2.5 text-sm placeholder:text-muted-foreground/50 transition-all duration-200`;
+function inputCls(hasError:boolean){
+ return `
+ w-full
+ bg-white/[0.04]
+ backdrop-blur-md
+ border
+ ${
+ hasError
+ ? "border-red-500/50"
+ : "border-white/10 focus:border-brand/60"
+ }
+ rounded-xl
+ px-4
+ py-3
+ text-sm
+ outline-none
+ transition-all
+ duration-200
+ placeholder:text-white/30
+ focus:bg-white/[0.06]
+ `;
 }
     
