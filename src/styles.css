@@ -99,3 +99,17 @@
     color: var(--color-brand-foreground);
   }
 }
+
+@keyframes glowMove {
+  0%, 100% {
+    transform: translate(-50%, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, 30px) scale(1.08);
+  }
+}
+
+.glow-move {
+  animation: glowMove 8s ease-in-out infinite;
+}
