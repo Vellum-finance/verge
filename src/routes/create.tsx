@@ -24,7 +24,7 @@ type Form = {
   telegram: string;
 };
 
-const MAX_TOKEN_IMAGE_MB = 2;
+const MAX_TOKEN_LOGO_MB = 2;
 const MAX_DESC = 500;
 
 function CreateToken() {
@@ -37,31 +37,31 @@ function CreateToken() {
     twitter: "",
     telegram: "",
   });
-  const [image, setImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [errors, setErrors] = useState<Partial<Record<keyof Form | "image", string>>>({});
+  const [logo, setLogo] = useState<File | null>(null);
+  const [logoPreview, setLogoPreview] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Partial<Record<keyof Form | "logo", string>>>({});
   const [submitting, setSubmitting] = useState(false);
   const fileRef = useRef<HTMLInputElement | null>(null);
 
   const set = <K extends keyof Form>(k: K, v: Form[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
 
-  const onImage = (file: File | null) => {
-    setErrors((e) => ({ ...e, image: undefined }));
+  const onLogo = (file: File | null) => {
+    setErrors((e) => ({ ...e, logo: undefined }));
     if (!file) {
-      setImage(null);
-      setImagePreview(null);
+      setLogo(null);
+      setLogoPreview(null);
       return;
     }
-    if (!/^image\/(png|jpe?g|webp|gif|svg\+xml)$/.test(file.type)) {
-      setErrors((e) => ({ ...e, image: "Use PNG, JPG, WEBP, GIF, or SVG." }));
+    if (!/^logo\/(png|jpe?g|webp|gif|svg\+xml)$/.test(file.type)) {
+      setErrors((e) => ({ ...e, logo: "Use PNG, JPG, WEBP, GIF, or SVG." }));
       return;
     }
-    if (file.size > MAX_IMAGE_MB * 1024 * 1024) {
-      setErrors((e) => ({ ...e, image: `Max ${MAX_IMAGE_MB}MB.` }));
+    if (file.size > MAX_LOGO_MB * 1024 * 1024) {
+      setErrors((e) => ({ ...e, logo: `Max ${MAX_LOGO_MB}MB.` }));
       return;
     }
-    setImage(file);
+    setLogo(file);
     const url = URL.createObjectURL(file);
     setImsgePreview(url);
   };
@@ -76,7 +76,7 @@ function CreateToken() {
     if (!form.description.trim()) next.description = "Required";
     else if (form.description.length > MAX_DESC)
       next.description = `Max ${MAX_DESC} characters`;
-    if (!image) next.image = "image required";
+    if (!logo) next.logo = "logo required";
     const urlRe = /^https?:\/\/.+/i;
     if (form.website && !urlRe.test(form.website)) next.website = "Must start with https://";
     if (form.twitter && !urlRe.test(form.twitter)) next.twitter = "Must start with https://";
@@ -110,7 +110,7 @@ function CreateToken() {
 
        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
        style={{
-        backgroundImage:
+        backgroundLogo:
          "linear-gradient(...",
        backgroundSize:"40px 40px",
       }}
@@ -214,27 +214,27 @@ function CreateToken() {
             />
           </Field>
 
-          <Field label="Image" hint={`≤${MAX_IMAGE_MB}MB`} error={errors.image}>
+          <Field label="Logo" hint={`≤${MAX_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
                 className="relative shrink-0 h-24 w-24 rounded-xl ring-1 ring-hairline bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-200 hover:scale-[1.03] grid place-items-center overflow-hidden"
               >
-                {imagePreview ? (
-                  <img src={imagePreview} alt="image preview" className="h-full w-full object-cover" />
+                {logoPreview ? (
+                  <img src={logoPreview} alt="logo preview" className="h-full w-full object-cover" />
                 ) : (
                   <span className="text-muted-foreground text-2xl">+</span>
                 )}
               </button>
               <div className="text-xs mono text-muted-foreground">
-                {image ? (
+                {logo ? (
                   <>
-                    <div className="text-foreground">{image.name}</div>
-                    <div>{(image.size / 1024).toFixed(1)} KB</div>
+                    <div className="text-foreground">{logo.name}</div>
+                    <div>{(logo.size / 1024).toFixed(1)} KB</div>
                     <button
                       type="button"
-                      onClick={() => onImage(null)}
+                      onClick={() => onLogo(null)}
                       className="mt-1 underline hover:text-foreground"
                     >
                       Remove
@@ -247,9 +247,9 @@ function CreateToken() {
               <input
                 ref={fileRef}
                 type="file"
-                accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"
+                accept="logo/png,logo/jpeg,logo/webp,logo/gif,ilogomage/svg+xml"
                 className="hidden"
-                onChange={(e) => onImage(e.target.files?.[0] ?? null)}
+                onChange={(e) => onLogo(e.target.files?.[0] ?? null)}
               />
             </div>
           </Field>
