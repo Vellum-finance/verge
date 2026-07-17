@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useRef, useState } from "react";
+import type React from "react";
 
 export const Route = createFileRoute("/create")({
   component: CreateToken,
@@ -86,7 +87,7 @@ function CreateToken() {
     return Object.keys(next).length === 0;
   };
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: import("react").FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
