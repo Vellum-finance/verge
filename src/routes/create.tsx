@@ -97,7 +97,24 @@ function CreateToken() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+       <div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+         <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[900px] bg-brand/15 blur-[160px] rounded-full glow-move" />
+
+         <div className="absolute top-40 -left-40 h-[450px] w-[450px] bg-brand/10 blur-[150px] rounded-full" />
+
+         <div className="absolute top-40 -right-40 h-[450px] w-[450px] bg-brand/10 blur-[150px] rounded-full" />
+
+    </div>
+
+       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+       style={{
+        backgroundImage:
+         "linear-gradient(...",
+       backgroundSize:"40px 40px",
+      }}
+      />
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -118,6 +135,21 @@ function CreateToken() {
       </nav>
 
       <main className="max-w-3xl mx-auto px-6 py-10">
+        <div className="mb-10 text-center animate-in fade-in duration-700">
+
+          <div className="text-[10px] mono uppercase tracking-[0.3em] text-brand mb-4">
+            Launch Your Token
+        </div>
+
+        <h1 className="text-4xl md:text-5xl font-medium tracking-tight">
+            Create your market.
+        </h1>
+
+        <p className="mt-4 text-sm text-muted-foreground max-w-xl mx-auto">
+            Define your token identity and prepare your launch on Verge.
+  </p>
+
+</div>
         <div className="mb-8 flex items-center justify-between">
           <div>
             <button
@@ -127,7 +159,7 @@ function CreateToken() {
             >
               ← Back
             </button>
-            <h1 className="mt-3 text-2xl md:text-3xl font-medium">Launch token</h1>
+            <h1 className="mt-3 text-2xl md:text-3xl font-medium">Token Details</h1>
             <p className="mt-1 text-sm text-muted-foreground">
             </p>
           </div>
@@ -135,7 +167,7 @@ function CreateToken() {
 
         <form
           onSubmit={submit}
-          className="rounded-xl ring-1 ring-hairline bg-card p-6 md:p-8 space-y-6"
+          className="rounded-xl ring-1 ring-hairline bg-card/80 backdrop-blur-md p-6 md:p-8 space-y-6 shadow-[0_0_60px_rgba(184,255,0,0.05)]"
           noValidate
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
