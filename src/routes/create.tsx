@@ -178,7 +178,7 @@ function CreateToken() {
           "
           noValidate
           
-          className=animate-in fade-in slide-in-from-bottom-4 duration-700
+          className="animate-in fade-in slide-in-from-bottom-4 duration-700"
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             <Field label="Token name" error={errors.name} className="sm:col-span-2">
