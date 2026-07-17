@@ -58,8 +58,8 @@ function CreateToken() {
       setErrors((e) => ({ ...e, logo: "Use PNG, JPG, WEBP, GIF, or SVG." }));
       return;
     }
-    if (file.size > MAX_LOGO_MB * 1024 * 1024) {
-      setErrors((e) => ({ ...e, logo: `Max ${MAX_LOGO_MB}MB.` }));
+    if (file.size > MAX_TOKEN_LOGO_MB * 1024 * 1024) {
+      setErrors((e) => ({ ...e, logo: `Max ${MAX_TOKEN_LOGO_MB}MB.` }));
       return;
     }
     setLogo(file);
@@ -215,7 +215,7 @@ function CreateToken() {
             />
           </Field>
 
-          <Field label="Logo" hint={`≤${MAX_LOGO_MB}MB`} error={errors.logo}>
+          <Field label="Logo" hint={`≤${MAX_TOKEN_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
                 type="button"
