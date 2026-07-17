@@ -167,8 +167,18 @@ function CreateToken() {
 
         <form
           onSubmit={submit}
-          className="rounded-xl ring-1 ring-hairline bg-card/80 backdrop-blur-md p-6 md:p-8 space-y-6 shadow-[0_0_60px_rgba(184,255,0,0.05)]"
+          className="
+          rounded-2xl 
+          ring-1 ring-white/10 
+          bg-white/[0.03]
+          backdrop-blur-xl
+          p-6 md:p-8 
+          space-y-6
+          shadow-[0_0_80px_rgba(184,255,0,0.06)]
+          "
           noValidate
+          
+          className=animate-in fade-in slide-in-from-bottom-4 duration-700
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             <Field label="Token name" error={errors.name} className="sm:col-span-2">
@@ -209,7 +219,7 @@ function CreateToken() {
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="relative shrink-0 h-20 w-20 rounded-lg ring-1 ring-hairline bg-surface-alt hover:bg-accent grid place-items-center overflow-hidden"
+                className="relative shrink-0 h-24 w-24 rounded-xl ring-1 ring-hairline bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-200 hover:scale-[1.03] grid place-items-center overflow-hidden"
               >
                 {logoPreview ? (
                   <img src={logoPreview} alt="Logo preview" className="h-full w-full object-cover" />
@@ -244,7 +254,7 @@ function CreateToken() {
             </div>
           </Field>
 
-          <div className="pt-2 border-t border-hairline">
+          <div className="pt-6 mt-2 border-t border-white/10">
             <div className="text-[10px] mono uppercase tracking-widest text-muted-foreground mb-3">
               Socials · optional
             </div>
@@ -332,7 +342,10 @@ function Field({
 }
 
 function inputCls(hasError: boolean) {
-  return `w-full bg-surface-alt ring-1 ${
-    hasError ? "ring-destructive/60" : "ring-hairline focus:ring-brand/50"
-  } outline-none rounded-md px-3 py-2 text-sm placeholder:text-muted-foreground/50`;
+  return `w-full bg-black/20 backdrop-blur-sm ring-1 ${
+    hasError
+      ? "ring-destructive/60"
+      : "ring-white/10 focus:ring-brand/50"
+  } outline-none rounded-lg px-3 py-2.5 text-sm placeholder:text-muted-foreground/50 transition-all duration-200`;
 }
+    
