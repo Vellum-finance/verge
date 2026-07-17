@@ -105,6 +105,64 @@ function VergeApp() {
             </div>
           </div>
         </section>
+        <section className="mt-8 rounded-xl ring-1 ring-hairline bg-card p-8">
+  <div className="max-w-2xl mx-auto text-center">
+
+    <div className="text-[10px] mono uppercase tracking-widest text-brand mb-3">
+      Coming Soon
+    </div>
+
+    <h2 className="text-xl md:text-2xl font-medium mb-3">
+      Verge is under development
+    </h2>
+
+    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+      The next generation token launch platform built for the Robinhood Network.
+      Create, launch and grow your community with Verge.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+
+      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
+        <div className="text-sm font-medium mb-1">
+          Instant Token Deployment
+        </div>
+        <div className="text-xs text-muted-foreground">
+          Launch tokens with a simple and seamless creation flow.
+        </div>
+      </div>
+
+      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
+        <div className="text-sm font-medium mb-1">
+          Virtual AMM Trading
+        </div>
+        <div className="text-xs text-muted-foreground">
+          Enable instant markets with a virtual liquidity model.
+        </div>
+      </div>
+
+      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
+        <div className="text-sm font-medium mb-1">
+          Community Launches
+        </div>
+        <div className="text-xs text-muted-foreground">
+          Built for creators and communities launching new ideas.
+        </div>
+      </div>
+
+      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
+        <div className="text-sm font-medium mb-1">
+          DEX Graduation
+        </div>
+        <div className="text-xs text-muted-foreground">
+          Successful projects can progress into decentralized liquidity.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
         {/* Minimal footer strip */}
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-[10px] mono uppercase tracking-widest text-muted-foreground">
