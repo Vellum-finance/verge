@@ -1,101 +1,241 @@
-@import "tailwindcss" source(none);
-@source "../src";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-surface: var(--surface);
-  --color-surface-alt: var(--surface-alt);
-  --color-hairline: var(--hairline);
-  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "JetBrains Mono", monospace;
-}
+/* ================================
+   Global Styles - Verge Token Launch
+   Dark Theme + Neon Lime Accents
+   ================================ */
 
 :root {
-  --radius: 0.75rem;
-
-  /* Verge terminal palette */
-  --surface: oklch(0.145 0.005 285);           /* #09090b */
-  --surface-alt: oklch(0.19 0.006 285);        /* #18181b */
-  --hairline: oklch(0.28 0.005 285 / 55%);     /* zinc-800/50 */
-
-  --background: var(--surface);
-  --foreground: oklch(0.92 0.005 285);         /* zinc-200 */
-
-  --card: oklch(0.19 0.006 285 / 55%);
-  --card-foreground: oklch(0.96 0.003 285);
-
-  --popover: oklch(0.19 0.006 285);
-  --popover-foreground: oklch(0.96 0.003 285);
-
-  --brand: oklch(0.9 0.19 121);                /* lime #bef264 */
-  --brand-foreground: oklch(0.145 0.005 285);
-
-  --primary: var(--brand);
-  --primary-foreground: var(--brand-foreground);
-
-  --secondary: oklch(0.24 0.006 285);
-  --secondary-foreground: oklch(0.92 0.005 285);
-
-  --muted: oklch(0.24 0.006 285);
-  --muted-foreground: oklch(0.62 0.008 285);   /* zinc-500 */
-
-  --accent: oklch(0.28 0.006 285);
-  --accent-foreground: oklch(0.96 0.003 285);
-
-  --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.98 0.003 285);
-
-  --border: oklch(0.28 0.005 285 / 55%);
-  --input: oklch(0.28 0.005 285);
-  --ring: var(--brand);
+  --bg-color: #0b0b0b;
+  --card-bg: #141414;
+  --text-color: #e5e5e5;
+  --muted-text: #888;
+  --accent: #b8ff00;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --transition: all 0.25s ease;
+  --radius: 8px;
+  --font-main: 'Inter', 'Roboto', sans-serif;
 }
 
-@utility mono {
-  font-family: var(--font-mono);
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer base {
-  * {
-    border-color: var(--color-border);
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ================================
+   Header Navigation
+   ================================ */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+header .logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+nav a {
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ================================
+   Main Container
+   ================================ */
+main {
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ================================
+   Form Elements
+   ================================ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.3px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted-text);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ================================
+   Token Type Selectors
+   ================================ */
+.token-types {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.token-type {
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.token-type:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 6px rgba(184, 255, 0, 0.3);
+}
+
+.token-type.active {
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ================================
+   Buttons
+   ================================ */
+button,
+.btn {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.9rem 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover,
+.btn:hover {
+  box-shadow: 0 0 12px var(--accent);
+  transform: translateY(-1px);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+button.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ================================
+   Animations
+   ================================ */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0px var(--accent); }
+  50% { box-shadow: 0 0 10px var(--accent); }
+  100% { box-shadow: 0 0 0px var(--accent); }
+}
+
+.glow {
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  html,
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  ::selection {
-    background-color: var(--color-brand);
-    color: var(--color-brand-foreground);
+  main {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .token-types {
+    justify-content: center;
   }
 }
