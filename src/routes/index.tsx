@@ -87,7 +87,7 @@ function VergeApp() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {s === "new" ? "Newest" : s === "mcap" ? "Mkt Cap" : "Volume"}
+                {s === "new" ? "New" : s === "mcap" ? "MCap" : "Volume"}
               </button>
             ))}
           </div>
@@ -99,10 +99,10 @@ function VergeApp() {
           className="rounded-xl ring-1 ring-hairline bg-card overflow-hidden"
         >
           <div className="grid grid-cols-4 gap-4 px-5 py-3 border-b border-hairline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-            <span>Token</span>
-            <span className="text-right hidden sm:block">Market Cap</span>
-            <span className="text-right hidden sm:block">Volume</span>
-            <span className="text-right">Graduation</span>
+            <span> </span>
+            <span className="text-right hidden sm:block"> </span>
+            <span className="text-right hidden sm:block"> </span>
+            <span className="text-right"> </span>
           </div>
 
           <div className="px-6 py-24 flex flex-col items-center text-center">
