@@ -19,6 +19,14 @@ function VergeApp() {
 
        <div className="absolute top-20 -right-40 h-[500px] w-[500px] bg-brand/10 blur-[150px] rounded-full" />
      </div>
+
+     <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+       style={{
+         backgroundImage:
+          "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+         backgroundSize: "40px 40px",
+        }}
+     />
      
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
