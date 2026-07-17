@@ -36,11 +36,6 @@ function VergeApp() {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <Link
-              to="/create"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs mono px-3 py-1.5 rounded-md bg-surface-alt ring-1 ring-hairline hover:bg-accent transition-colors"
-            >
-              <span className="text-brand">+</span> Create token
             </Link>
             <button
               type="button"
@@ -119,21 +114,14 @@ function VergeApp() {
             <p className="text-sm text-muted-foreground max-w-[52ch] mb-8">
               The token launch is not yet available stay tuned to our official X account for the latest announcements.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
-                to="/create"
-                className="bg-brand text-brand-foreground px-5 py-2.5 rounded-lg font-medium text-sm hover:scale-[1.02] transition-transform inline-flex items-center gap-2"
-              >
-                <span className="mono opacity-70">+</span> Create token
-              </Link>
-              <button
-                type="button"
-                className="bg-surface-alt text-foreground px-5 py-2.5 rounded-lg font-medium text-sm ring-1 ring-hairline hover:bg-accent transition-colors"
-
-              >
-                Connect wallet
-              </button>
-            </div>
+           <div className="flex items-center justify-center">
+             <Link
+               to="/create"
+               className="bg-brand text-brand-foreground px-5 py-2.5 rounded-lg font-medium text-sm hover:scale-[1.02] transition-transform inline-flex items-center gap-2"
+               >
+               <span className="mono opacity-70">+</span> Create token
+             </Link>
+           </div>
           </div>
         </section>
         <section className="mt-8 rounded-xl ring-1 ring-hairline bg-card p-8">
