@@ -40,6 +40,14 @@ function VergeApp() {
               to="/create"
               className="hidden sm:inline-flex items-center gap-1.5 text-xs mono px-3 py-1.5 rounded-md bg-surface-alt ring-1 ring-hairline hover:bg-accent transition-colors"
             >
+              <span className="text-brand">+</span> Create token
+            </Link>
+            <button
+              type="button"
+              className="text-sm font-medium bg-foreground text-background px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
+            >
+              Connect
+            </button>
           </div>
         </div>
       </nav>
