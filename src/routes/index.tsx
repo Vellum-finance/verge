@@ -110,7 +110,13 @@ function VergeApp() {
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-[10px] mono uppercase tracking-widest text-muted-foreground">
           <span>0 tokens · 0 graduated · $0 volume</span>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-foreground transition-colors">Twitter</a>
+            <a
+              href="https://x.com/xvckl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+            </a>
           </div>
         </div>
       </main>
