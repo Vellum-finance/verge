@@ -53,7 +53,7 @@ function CreateToken() {
       setLogoPreview(null);
       return;
     }
-    if (!/^logo\/(png|jpe?g|webp|gif|svg\+xml)$/.test(file.type)) {
+    if (!/^image\/(png|jpe?g|webp|gif|svg\+xml)$/.test(file.type)) {
       setErrors((e) => ({ ...e, logo: "Use PNG, JPG, WEBP, GIF, or SVG." }));
       return;
     }
@@ -73,9 +73,9 @@ function CreateToken() {
     if (!form.ticker.trim()) next.ticker = "Required";
     else if (!/^[A-Z0-9]{2,10}$/.test(form.ticker))
       next.ticker = "2–10 uppercase letters or digits";
-    if (!form.description.trim()) next.description = "Required";
-    else if (form.description.length > MAX_DESC)
-      next.description = `Max ${MAX_DESC} characters`;
+    if (form.description.length > MAX_DESC)
+      if (form.description.length > MAX_DESC)
+  next.description = `Max ${MAX_DESC} characters`;
     if (!logo) next.logo = "logo required";
     const urlRe = /^https?:\/\/.+/i;
     if (form.website && !urlRe.test(form.website)) next.website = "Must start with https://";
@@ -284,11 +284,6 @@ function CreateToken() {
                 />
               </Field>
             </div>
-          </div>
-
-          <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4 text-xs text-muted-foreground">
-            <div className="mono uppercase tracking-widest text-[10px] text-foreground mb-1">
-          </div>
           </div>
 
           <div className="flex items-center justify-between gap-3 pt-2">
