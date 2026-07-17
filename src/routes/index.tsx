@@ -36,7 +36,6 @@ function VergeApp() {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            </Link>
             <button
               type="button"
               className="text-sm font-medium bg-foreground text-background px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
