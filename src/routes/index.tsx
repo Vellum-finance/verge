@@ -37,6 +37,20 @@ function VergeApp() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-6 py-8">
+        <div className="mb-10 text-center">
+          <div className="text-[10px] mono uppercase tracking-[0.3em] text-brand mb-4">
+            Robinhood Network
+           </div>
+
+          <h1 className="text-4xl md:text-5xl font-medium tracking-tight">
+             Build the next market.
+            </h1>
+
+             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+                Verge gives creators a simple way to introduce new tokens
+                and bring ideas into the market.
+          </p>
+         </div>
         {/* Toolbar */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
           <div className="flex-1 relative">
