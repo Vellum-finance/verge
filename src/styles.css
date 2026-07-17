@@ -106,10 +106,39 @@
   }
 
   50% {
-    transform: translate(-50%, 30px) scale(1.08);
+    transform: translate(-50%, 25px) scale(1.08);
   }
 }
 
+@keyframes glowLeft {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes glowRight {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-40px);
+  }
+}
+
+
 .glow-move {
   animation: glowMove 8s ease-in-out infinite;
+}
+
+.glow-left {
+  animation: glowLeft 10s ease-in-out infinite;
+}
+
+.glow-right {
+  animation: glowRight 10s ease-in-out infinite;
 }
