@@ -182,7 +182,7 @@ function CreateToken() {
          noValidate
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <Field label="Token name" error={errors.name} className="sm:col-span-2">
+            <Field label="Logo" error={errors.name} className="sm:col-span-2">
               <input
                 value={form.name}
                 onChange={(e) => set("name", e.target.value)}
@@ -215,7 +215,7 @@ function CreateToken() {
             />
           </Field>
 
-          <Field label="Token Image" hint={`≤${MAX_LOGO_MB}MB`} error={errors.logo}>
+          <Field label="Token Image" hint={`≤${MAX_TOKEN_LOGO_MB}MB`} error={errors.logo}>
             <div className="flex items-center gap-4">
               <button
                 type="button"
