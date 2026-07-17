@@ -120,13 +120,25 @@ function CreateToken() {
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <Link to="/" className="mono text-lg font-medium tracking-tighter text-brand">
-              VERGE.
-            </Link>
-            <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-              Robinhood Network ·
-            </span>
-          </div>
+            <Link 
+             to="/" 
+             className="flex items-center gap-3"
+          >
+             <img
+               src="/verge-logo.png"
+               alt="Verge logo"
+               className="h-8 w-8 object-contain"
+          />
+
+          <span className="mono text-lg font-medium tracking-tighter text-brand">
+           VERGE<span className="text-brand">.</span>
+        </span>
+      </Link>
+ 
+      <span className="hidden md:inline text-[10px] mono uppercase tracking-widest text-muted-foreground">
+    
+      </span>
+     </div>
           <button
             type="button"
             className="text-sm font-medium bg-foreground text-background px-4 py-1.5 rounded-full hover:opacity-90"
