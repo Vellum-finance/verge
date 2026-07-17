@@ -12,8 +12,12 @@ function VergeApp() {
   return (
    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
      
-     <div className="absolute inset-0 pointer-events-none">
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[500px] w-[700px] bg-brand/10 blur-[140px] rounded-full" />
+     <div className="absolute inset-0 pointer-events-none overflow-hidden">
+       <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[900px] bg-brand/15 blur-[160px] rounded-full" />
+
+       <div className="absolute top-20 -left-40 h-[500px] w-[500px] bg-brand/10 blur-[150px] rounded-full" />
+
+       <div className="absolute top-20 -right-40 h-[500px] w-[500px] bg-brand/10 blur-[150px] rounded-full" />
      </div>
      
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
