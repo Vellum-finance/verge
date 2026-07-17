@@ -202,7 +202,7 @@ function CreateToken() {
           </div>
 
           <Field
-            label="Description"
+            label="Description · Optional"
             error={errors.description}
             hint={`${form.description.length}/${MAX_DESC}`}
           >
