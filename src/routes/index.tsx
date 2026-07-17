@@ -11,7 +11,11 @@ function VergeApp() {
 
   return (
    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-    <div className="absolute inset-x-0 top-0 -z-10 h-[400px] bg-brand/10 blur-[120px]" />
+     
+     <div className="absolute inset-0 pointer-events-none">
+       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[500px] w-[700px] bg-brand/10 blur-[140px] rounded-full" />
+     </div>
+     
       <nav className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
