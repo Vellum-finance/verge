@@ -337,7 +337,7 @@ function CreateToken() {
               disabled={submitting}
               className="bg-brand text-brand-foreground px-6 py-2.5 rounded-lg font-medium text-sm hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:hover:scale-100 inline-flex items-center gap-2"
             >
-              {submitting ? "Deploying…" : "Deploy token"}
+              {submitting ? "Deploying…" : "Launch Token"}
             </button>
           </div>
         </form>
