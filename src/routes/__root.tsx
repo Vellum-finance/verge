@@ -122,7 +122,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
         <script
          async
-         src="https://www.googletagmanager.com/gtag/js?id=G-V4Y0XXBT6L"
+         src="https://www.googletagmanager.com/gtag/js?id=G-Q5WVVZENCK"
         />
 
         <script
@@ -131,7 +131,7 @@ function RootShell({ children }: { children: ReactNode }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-V4Y0XXBT6L');
+            gtag('config', 'G-Q5WVVZENCK');
           `,
          }}
        />
