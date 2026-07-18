@@ -133,7 +133,7 @@ function VergeApp() {
                to="/create"
                className="bg-brand text-brand-foreground px-5 py-2.5 rounded-lg font-medium text-sm hover:scale-[1.02] transition-transform inline-flex items-center gap-2"
                >
-               <span className="mono opacity-70">+</span> Create token
+               <span className="mono opacity-70">+</span> Launch Token
              </Link>
            </div>
           </div>
