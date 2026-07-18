@@ -202,7 +202,7 @@ function VergeApp() {
           <span>0 tokens · 0 graduated · $0 volume</span>
           <div className="flex gap-5">
             <a
-             href="https://x.com/xvckl"
+             href="https://x.com/verge_rh"
              target="_blank"
              rel="noopener noreferrer"
              className="hover:text-foreground transition-colors"
