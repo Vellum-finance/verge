@@ -1,6 +1,14 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import type React from "react";
+import { usePrivy } from "@privy-io/react-auth";
+import CreateTokenForm from "../components/forms/CreateTokenForm";
+import { supabase } from "../lib/supabase";
+import { ConnectWalletButton } from "../components/ConnectWalletButton";
+import { v4 as uuid } from "uuid";
+import { uploadTokenLogo } from "../services/upload";
+import { createToken } from "../services/token";
+import FormField from "../components/forms/FormField";
 
 export const Route = createFileRoute("/create")({
   component: CreateToken,
@@ -30,6 +38,13 @@ const MAX_DESC = 500;
 
 function CreateToken() {
   const router = useRouter();
+
+  const {
+  authenticated,
+  user,
+  login,
+} = usePrivy();
+
   const [form, setForm] = useState<Form>({
     name: "",
     ticker: "",
@@ -87,15 +102,52 @@ function CreateToken() {
     return Object.keys(next).length === 0;
   };
 
-  const submit = async (e: import("react").FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setSubmitting(true);
-    // Placeholder — deployment pipeline wires in once the on-chain factory is live.
-    await new Promise((r) => setTimeout(r, 600));
+  const submit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  if (!authenticated) {
+    login();
+    return;
+  }
+
+  if (!logo) {
+    alert("Please upload a token logo.");
+    return;
+  }
+
+  setSubmitting(true);
+
+  try {
+    // Upload image
+    const imageUrl = await uploadTokenLogo(logo);
+
+    // Save token
+    await createToken({
+      creator_wallet: user!.wallet!.address,
+      name: form.name,
+      symbol: form.ticker,
+      description: form.description,
+      logo_url: imageUrl,
+      website: form.website,
+      twitter: form.twitter,
+      telegram: form.telegram,
+    });
+
+    alert("Token created successfully!");
+
+    router.navigate({
+      to: "/",
+    });
+
+  } catch (err) {
+    console.error("FULL ERROR:", err);
+    alert("Lihat Console");
+  } finally {
     setSubmitting(false);
-    alert("Connect your wallet to deploy. On-chain factory launching soon.");
-  };
+  }
+};
 
   return (
      <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
@@ -139,12 +191,7 @@ function CreateToken() {
     
       </span>
      </div>
-          <button
-            type="button"
-            className="text-sm font-medium bg-foreground text-background px-4 py-1.5 rounded-full hover:opacity-90"
-          >
-            Connect
-          </button>
+          <ConnectWalletButton />
         </div>
       </nav>
 

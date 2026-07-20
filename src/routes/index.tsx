@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { supabase } from "../lib/supabase";
+import { ConnectWalletButton } from "../components/ConnectWalletButton";
+import { useEffect, useState } from "react";
+import type { Token } from "../types/token";
 
 export const Route = createFileRoute("/")({
   component: VergeApp,
@@ -8,6 +11,94 @@ export const Route = createFileRoute("/")({
 function VergeApp() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<"new" | "mcap" | "volume">("new");
+  
+  const [tokens, setTokens] = useState<Token[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [now, setNow] = useState(Date.now());
+
+useEffect(() => {
+  async function loadTokens() {
+    const { data, error } = await supabase
+      .from("tokens")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    setTokens(data ?? []);
+    setLoading(false);
+  }
+
+  loadTokens();
+
+  const interval = setInterval(loadTokens, 5000);
+
+  return () => clearInterval(interval);
+
+}, []);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setNow(Date.now());
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
+
+function timeAgo(date: string) {
+  const seconds = Math.floor(
+    (now - new Date(date).getTime()) / 1000
+  );
+
+  if (seconds < 60) return `${seconds}s`;
+
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes}m`;
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h`;
+
+  const days = Math.floor(hours / 24);
+  if (days < 7) return `${days}d`;
+
+  const weeks = Math.floor(days / 7);
+  if (weeks < 4) return `${weeks}w`;
+
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months}mo`;
+
+  return `${Math.floor(days / 365)}y`;
+}
+
+const filteredTokens = [...tokens]
+  .filter((token) => {
+    const q = query.toLowerCase();
+
+    return (
+      token.name.toLowerCase().includes(q) ||
+      token.symbol.toLowerCase().includes(q) ||
+      token.creator_wallet.toLowerCase().includes(q)
+    );
+  })
+  .sort((a, b) => {
+    switch (sort) {
+      case "mcap":
+        return b.market_cap - a.market_cap;
+
+      case "volume":
+        return b.volume - a.volume;
+
+      case "new":
+      default:
+        return (
+          new Date(b.created_at).getTime() -
+          new Date(a.created_at).getTime()
+        );
+    }
+  });
 
   return (
    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
@@ -51,12 +142,7 @@ function VergeApp() {
 
         </div>
           <div className="flex items-center gap-3">
-            <button
-              type="button"
-              className="text-sm font-medium bg-foreground text-background px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-            >
-              Connect
-            </button>
+            <ConnectWalletButton />
           </div>
         </div>
       </nav>
@@ -109,92 +195,89 @@ function VergeApp() {
         </div>
 
         {/* Empty state — no tokens yet */}
-        <section
-          aria-labelledby="empty-state"
-          className="rounded-xl ring-1 ring-hairline bg-card overflow-hidden"
-        >
-          <div className="grid grid-cols-4 gap-4 px-5 py-3 border-b border-hairline text-[10px] mono uppercase tracking-widest text-muted-foreground">
-            <span> </span>
-            <span className="text-right hidden sm:block"> </span>
-            <span className="text-right hidden sm:block"> </span>
-            <span className="text-right"> </span>
-          </div>
+        <section className="rounded-xl ring-1 ring-hairline bg-card overflow-hidden">
 
-          <div className="px-6 py-24 flex flex-col items-center text-center">
-            <h1 id="empty-state" className="text-2xl md:text-3xl font-medium mb-3 max-w-[38ch]">
-               The token launcher currently being prepared.
-              
-            </h1>
-            <p className="text-sm text-muted-foreground max-w-[52ch] mb-8">
-               Make sure to follow the official Verge X account for all future updates and announcements.
-            </p>
-           <div className="flex items-center justify-center">
-             <Link
-               to="/create"
-               className="bg-brand text-brand-foreground px-5 py-2.5 rounded-lg font-medium text-sm hover:scale-[1.02] transition-transform inline-flex items-center gap-2"
-               >
-               <span className="mono opacity-70">+</span> Launch Token
-             </Link>
-           </div>
-          </div>
-        </section>
-        <section className="mt-8 rounded-xl ring-1 ring-hairline bg-card p-8">
-  <div className="max-w-2xl mx-auto text-center">
-
-    <div className="text-[10px] mono uppercase tracking-widest text-brand mb-3">
-      Coming Soon
-    </div>
-
-    <h2 className="text-xl md:text-2xl font-medium mb-3">
-      Verge is under development
-    </h2>
-
-    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-      The next generation token launch platform built for the Robinhood Network.
-      Create, launch and grow your community with Verge.
-    </p>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
-
-      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
-        <div className="text-sm font-medium mb-1">
-          Instant Token Deployment
-        </div>
-        <div className="text-xs text-muted-foreground">
-          Launch tokens with a simple and seamless creation flow.
-        </div>
-      </div>
-
-      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
-        <div className="text-sm font-medium mb-1">
-          Designed For Communities
-        </div>
-        <div className="text-xs text-muted-foreground">
-          Give creators the tools to build and grow together.
-        </div>
-      </div>
-
-      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
-        <div className="text-sm font-medium mb-1">
-          Community Launches
-        </div>
-        <div className="text-xs text-muted-foreground">
-          Built for creators and communities launching new ideas.
-        </div>
-      </div>
-
-      <div className="rounded-lg bg-surface-alt ring-1 ring-hairline p-4">
-        <div className="text-sm font-medium mb-1">
-          Market Starts Here
-        </div>
-        <div className="text-xs text-muted-foreground">
-          Every idea begins with a token. Verge provides the foundation to bring it into the market.
-        </div>
-      </div>
-
-    </div>
-
+  <div className="grid grid-cols-4 gap-4 px-5 py-3 border-b border-hairline text-[10px] mono uppercase tracking-widest text-muted-foreground">
+    <span>Token</span>
+    <span className="text-right hidden sm:block">Creator</span>
+    <span className="text-right hidden sm:block">Market Cap</span>
+    <span className="text-right">Status</span>
   </div>
+
+  {loading ? (
+    <div className="py-16 text-center text-muted-foreground">
+      Loading tokens...
+    </div>
+  ) : filteredTokens.length === 0 ? (
+    <div className="py-16 text-center text-muted-foreground">
+      No tokens found.
+    </div>
+  ) : (
+    filteredTokens.map((token) => (
+      <Link
+        key={token.id}
+        to="/token/$id"
+        params={{ id: token.id }}
+        className="
+          grid grid-cols-4 gap-4 px-5 py-4
+          border-b border-hairline
+          items-center
+          hover:bg-white/[0.03]
+          transition-colors
+          cursor-pointer
+       "
+      >
+        <div className="flex items-center gap-3">
+          <img
+            src={token.logo_url || "/verge-logo.png"}
+            alt={token.name}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+
+          <div>
+            <div className="font-medium">
+              {token.name}
+            </div>
+
+            <div className="text-xs text-muted-foreground">
+              ${token.symbol}
+            </div>
+
+            <div className="mt-1 text-[11px] mono text-brand">
+              ${Number(token.current_price).toFixed(8)}
+            </div>
+          </div>
+        </div>
+
+        <div className="text-right hidden sm:block text-xs mono">
+          {token.creator_wallet?.slice(0,6)}...
+          {token.creator_wallet?.slice(-4)}
+        </div>
+
+        <div className="text-right hidden sm:block">
+          <div className="text-sm font-medium">
+            $
+            {Number(token.market_cap).toLocaleString(undefined, {
+              maximumFractionDigits: 0,
+            })}
+          </div>
+
+          <div className="text-[10px] mono text-muted-foreground">
+             MCAP
+          </div>
+        </div>
+
+        <div className="flex items-center justify-end gap-2">
+          <span className="h-2 w-2 rounded-full bg-brand animate-pulse" />
+
+          <span className="text-xs mono text-muted-foreground">
+            {timeAgo(token.created_at)}
+          </span>
+        </div>
+      </Link>
+    ))
+  )}
+
 </section>
 
         {/* Minimal footer strip */}
