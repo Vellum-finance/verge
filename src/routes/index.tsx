@@ -78,18 +78,18 @@ const filteredTokens = [...tokens]
     const q = query.toLowerCase();
 
     return (
-      token.name.toLowerCase().includes(q) ||
-      token.symbol.toLowerCase().includes(q) ||
-      token.creator_wallet.toLowerCase().includes(q)
+      (token.name ?? "").toLowerCase().includes(q) ||
+      (token.symbol ?? "").toLowerCase().includes(q) ||
+      (token.creator_wallet ?? "").toLowerCase().includes(q)
     );
   })
   .sort((a, b) => {
     switch (sort) {
       case "mcap":
-        return b.market_cap - a.market_cap;
+        return (b.market_cap ?? 0) - (a.market_cap ?? 0);
 
       case "volume":
-        return b.volume - a.volume;
+        return (b.volume ?? 0) - (a.volume ?? 0);
 
       case "new":
       default:
