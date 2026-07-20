@@ -77,6 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
+      {
+        name: "virtual-protocol-site-verification",
+        content: "aceb2f722a908e13e2b923c0b60d8930",
+      },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Verge — Instant token launchpad on Robinhood Network" },
       {
